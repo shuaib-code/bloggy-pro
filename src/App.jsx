@@ -1,8 +1,10 @@
+import { Outlet } from "react-router-dom";
+
 function App() {
   return (
     <>
       <div>
-        <h1 className="text-violet-700 font-medium">Project init</h1>
+        <Outlet></Outlet>
       </div>
     </>
   );
