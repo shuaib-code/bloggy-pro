@@ -1,6 +1,18 @@
+import moment from "moment/moment";
 import useAuth from "../hooks/useAuth";
+import { useMutation } from "@tanstack/react-query";
+import api from "../config/axios.config";
+import toast from "react-hot-toast";
+
 const Add = () => {
   const { user } = useAuth();
+  const mutation = useMutation({
+    mutationFn: async (blog) => {
+      return await api.post("/blog", blog).then((r) => {
+        r.data.acknowledged ? toast.success("Your Blog is now Public") : null;
+      });
+    },
+  });
   const catOption = [
     "education",
     "food",
@@ -18,8 +30,10 @@ const Add = () => {
     const cat = form.cat.value;
     const img = form.img.value;
     const des = form.des.value;
+    const date = moment().format();
 
-    const blog = { title, cat, img, des, creator: user.uid };
+    const blog = { title, cat, img, des, creator: user.uid, date };
+    mutation.mutate(blog);
   };
   const form = (
     <div>
@@ -86,7 +100,7 @@ const Add = () => {
           <input
             type="submit"
             className="mt-1 px-3 py-2.5 text-white font-semibold bg-primary border shadow-sm border-slate-30 block w-full rounded-md sm:text-sm "
-            value="Post"
+            value={mutation.isPending ? "Posting...." : "Post"}
           />
         </label>
       </form>
