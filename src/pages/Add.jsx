@@ -32,7 +32,14 @@ const Add = () => {
     const des = form.des.value;
     const date = moment().format();
 
-    const blog = { title, cat, img, des, creator: user.uid, date };
+    const blog = {
+      title,
+      cat,
+      img,
+      des,
+      creator: { id: user.uid, img: user.photoURL, userName: user.displayName },
+      date,
+    };
     mutation.mutate(blog);
   };
   const form = (
