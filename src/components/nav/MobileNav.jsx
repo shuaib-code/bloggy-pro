@@ -7,7 +7,7 @@ const MobileNav = ({ show, setShow }) => {
       onClick={() => setShow(!show)}
       className={`${
         show ? "absolute" : "hidden"
-      } bg-white p-6 rounded-md shadow-xl`}
+      } bg-white p-6 rounded-md shadow-xl z-50`}
     >
       <div className="flex-row items-center justify-center font-semibold text-sm space-y-4 text-gray-900">
         <div>

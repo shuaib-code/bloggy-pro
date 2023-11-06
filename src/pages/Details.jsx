@@ -70,7 +70,7 @@ const Details = () => {
     </div>
   );
   const commentSection = (
-    <div className="mt-9 ">
+    <div>
       {user.uid === creator.id ? (
         <Link to={`/update/${blogId}`}>
           <div className="flex justify-center font-semibold items-center gap-4 bg-primary text-primary bg-opacity-10 py-2 rounded-md">
@@ -109,25 +109,25 @@ const Details = () => {
   );
   return (
     <div className="flex items-center justify-center py-7 mt-7">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-        <div className="relative">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+        <div className="relative col-span-2">
           <img src={img} className="rounded-xl shadow-2xl w-full" />
           <p className="text-sm uppercase font-semibold shadow-2xl absolute top-2 right-2.5 px-3 py-1 my-1 inline-flex rounded-sm text-primary bg-white">
             {cat}
           </p>
-        </div>
-        <div>
-          <h1 className="text-xl lg:text-2xl font-bold">{title}</h1>
-          <div className="flex justify-between items-center mt-4">
-            <div className="flex justify-center items-center">
-              <img src={creator?.img} className="w-8 rounded-full mr-2" />
-              <p className=" font-semibold">{creator?.userName}</p>
+          <div className="mt-9">
+            <h1 className="text-xl lg:text-2xl font-bold">{title}</h1>
+            <div className="flex justify-between items-center mt-4">
+              <div className="flex justify-center items-center">
+                <img src={creator?.img} className="w-8 rounded-full mr-2" />
+                <p className=" font-semibold">{creator?.userName}</p>
+              </div>
+              <p className="font-medium text-primary">{now}</p>
             </div>
-            <p className="font-medium text-primary">{now}</p>
+            <p className="font-medium mt-4">{des}</p>
           </div>
-          <p className="font-medium mt-4">{des}</p>
-          {commentSection}
         </div>
+        <div>{commentSection}</div>
       </div>
     </div>
   );
