@@ -10,6 +10,7 @@ import Wishlist from "../pages/Wishlist";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Error from "../pages/error";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -23,15 +24,23 @@ const router = createBrowserRouter([
       },
       {
         path: "add",
-        element: <Add></Add>,
+        element: (
+          <PrivateRoute>
+            <Add></Add>
+          </PrivateRoute>
+        ),
       },
       {
         path: "blogs",
         element: <Blogs></Blogs>,
       },
       {
-        path: "details",
-        element: <Details></Details>,
+        path: "details/:blogId",
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
       },
       {
         path: "featured",
@@ -43,7 +52,11 @@ const router = createBrowserRouter([
       },
       {
         path: "wishlist",
-        element: <Wishlist></Wishlist>,
+        element: (
+          <PrivateRoute>
+            <Wishlist></Wishlist>
+          </PrivateRoute>
+        ),
       },
     ],
   },

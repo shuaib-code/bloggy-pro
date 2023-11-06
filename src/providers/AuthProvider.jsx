@@ -15,7 +15,7 @@ const googelProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [reloading, setReloading] = useState(null);
+  const [reloading, setReloading] = useState(1);
 
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
