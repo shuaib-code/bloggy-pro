@@ -117,7 +117,7 @@ const Add = () => {
     <div className="py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
       <div>{form}</div>
       <div>
-        <img src="post.png" alt="" />
+        <img src="/post.png" />
       </div>
     </div>
   );

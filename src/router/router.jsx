@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         element: <Featured></Featured>,
       },
       {
-        path: "update",
+        path: "update/:blogId",
         element: <Update></Update>,
       },
       {

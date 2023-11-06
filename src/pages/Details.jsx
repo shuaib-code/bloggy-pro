@@ -1,8 +1,8 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import api from "../config/axios.config";
 import moment from "moment/moment";
-import { BiCommentAdd } from "react-icons/bi";
+import { BiCommentAdd, BiEdit } from "react-icons/bi";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useState } from "react";
@@ -71,14 +71,19 @@ const Details = () => {
   );
   const commentSection = (
     <div className="mt-9 ">
-      <div className="flex justify-center items-center gap-4 bg-gray-100 py-2 rounded-md">
-        <BiCommentAdd className="text-xl"></BiCommentAdd>
-        <h1>
-          {user.uid === creator.id
-            ? "You can not comment here"
-            : "Leave your comment"}
-        </h1>
-      </div>
+      {user.uid === creator.id ? (
+        <Link to={`/update/${blogId}`}>
+          <div className="flex justify-center font-semibold items-center gap-4 bg-primary text-primary bg-opacity-10 py-2 rounded-md">
+            <BiEdit className="text-xl"></BiEdit>
+            <h1>Edit your blog</h1>
+          </div>
+        </Link>
+      ) : (
+        <div className="flex justify-center items-center gap-4 bg-gray-100 py-2 rounded-md">
+          <BiCommentAdd className="text-xl"></BiCommentAdd>
+          <h1>Leave your comment</h1>
+        </div>
+      )}
       {user.uid === creator.id ? null : (
         <form className="space-y-5 my-4" onSubmit={handelComment}>
           <label className="block">
