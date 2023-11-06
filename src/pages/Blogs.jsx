@@ -5,6 +5,7 @@ import BlogCard from "../components/card/BlogCard";
 
 const Blogs = () => {
   const [filter, setfilter] = useState("blog");
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const getBlogs = (filter) => api.get(`/${filter}`);
 
@@ -20,7 +21,7 @@ const Blogs = () => {
     queryFn: () => getBlogs(filter),
     keepPreviousData: true,
   });
-  console.log(blogs);
+
   const search = (e) => {
     e.preventDefault();
     const value = e.target.search.value;
@@ -78,16 +79,32 @@ const Blogs = () => {
             <h1 className="text-lg font-bold">Filter by Catagory</h1>
             <div className="mt-4">
               <p
-                onClick={() => setfilter(`blog`)}
-                className="px-3 m-1.5 font-semibold text-center py-1 bg-primary rounded-md text-white inline-block"
+                onClick={() => {
+                  setfilter(`blog`);
+                  setActiveFilter("all");
+                }}
+                id="all"
+                className={`px-3 m-1.5 font-semibold text-center py-1 border-2 border-primary ${
+                  activeFilter === "all"
+                    ? "text-primary bg-white"
+                    : "bg-primary  text-white"
+                } rounded-md inline-block`}
               >
                 All
               </p>
               {catOption.map((e, i) => (
                 <p
                   key={i}
-                  onClick={() => setfilter(`blog?cat=${e}`)}
-                  className="px-3 font-semibold m-1.5 text-center py-1 bg-primary rounded-md text-white inline-block"
+                  id={e}
+                  onClick={() => {
+                    setfilter(`blog?cat=${e}`);
+                    setActiveFilter(e);
+                  }}
+                  className={`px-3 m-1.5 font-semibold text-center py-1 border-2 border-primary ${
+                    activeFilter === e
+                      ? "text-primary bg-white"
+                      : "bg-primary  text-white"
+                  } rounded-md inline-block`}
                 >
                   {e}
                 </p>
