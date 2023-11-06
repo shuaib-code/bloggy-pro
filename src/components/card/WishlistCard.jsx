@@ -36,7 +36,7 @@ const BlogCard = ({ blogId, id, set, fetch }) => {
       </div>
       <div className="p-2">
         <div className="flex justify-between items-center">
-          <p className="text-sm font-semibold text-primary bg-primary bg-opacity-10 rounded-lg  inline-flex px-5">
+          <p className="text-sm font-semibold text-primary bg-primary bg-opacity-10 rounded-md  inline-flex px-5">
             {cat}
           </p>
           <p className="text-sm font-semibold">{ago}</p>
@@ -62,7 +62,7 @@ const BlogCard = ({ blogId, id, set, fetch }) => {
               onClick={() => {
                 mutation.mutate();
               }}
-              className="font-semibold text-sm px-3 py-1 bg-primary bg-opacity-10 rounded-sm text-primary"
+              className="font-semibold text-sm px-3 py-1 bg-red-700 bg-opacity-10 rounded-sm text-red-700"
             >
               {mutation.isPending ? "Removing..." : "Remove from Wishlist"}
             </button>

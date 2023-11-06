@@ -26,7 +26,7 @@ const BlogCard = ({ blog }) => {
       </div>
       <div className="p-2">
         <div className="flex justify-between items-center">
-          <p className="text-sm font-semibold text-primary bg-primary bg-opacity-10 rounded-lg  inline-flex px-5">
+          <p className="text-sm font-semibold text-primary uppercase rounded-lg  inline-flex px-5">
             {cat}
           </p>
           <p className="text-sm font-semibold">{ago}</p>
