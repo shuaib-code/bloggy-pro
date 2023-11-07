@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 const Newsletter = () => {
   const [newsletter, setNewsletter] = useState(0);
+  const { ref, inView } = useInView();
+  console.log(inView);
   const massage = (
     <div
       className={`${
@@ -32,9 +36,28 @@ const Newsletter = () => {
     </div>
   );
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 py-3 my-7 items-center bg-[#f6f9fc] rounded-lg">
+    <div
+      ref={ref}
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 py-3 my-7 items-center bg-[#f6f9fc] rounded-lg"
+    >
       <div>
-        <img src="/newsletter.png" />
+        {inView ? (
+          <motion.img
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.3,
+              ease: [0, 0.71, 0.2, 1.01],
+              scale: {
+                type: "spring",
+                damping: 5,
+                stiffness: 100,
+                restDelta: 0.001,
+              },
+            }}
+            src="/newsletter.png"
+          />
+        ) : null}
       </div>
       <div className="px-4">
         <h1 className="text-3xl lg:text-4xl text-gray-700 font-bold text-center my-5">
