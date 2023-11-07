@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import { useMutation } from "@tanstack/react-query";
 import api from "../../config/axios.config";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const BlogCard = ({ blog }) => {
   const { user } = useAuth();
@@ -47,20 +48,26 @@ const BlogCard = ({ blog }) => {
         <div className="mt-5 flex justify-end items-center mr-4 gap-2">
           <div>
             <Link to={`/details/${_id}`}>
-              <button className="font-semibold text-sm px-3 py-1 bg-primary rounded-sm text-white">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="font-semibold text-sm px-3 py-1 bg-primary rounded-sm text-white"
+              >
                 Details
-              </button>
+              </motion.button>
             </Link>
           </div>
           <div>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => {
                 mutation.mutate({ blogId: _id, userRef: user?.uid });
               }}
               className="font-semibold text-sm px-3 py-1 bg-primary bg-opacity-10 rounded-sm text-primary"
             >
               {mutation.isPending ? "Adding..." : "Add to Wishlist"}
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
