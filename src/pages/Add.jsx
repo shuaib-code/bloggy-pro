@@ -67,7 +67,7 @@ const Add = () => {
               Catagory
             </span>
             <select
-              className="mt-1 px-3 my-0 py-2.5 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-primary block w-full rounded-md sm:text-sm focus:ring-1"
+              className="mt-1 uppercase font-medium px-3 my-0 py-2.5 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-primary block w-full rounded-md sm:text-sm focus:ring-1"
               name="cat"
               id="Cat"
             >
