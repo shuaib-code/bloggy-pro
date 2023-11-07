@@ -91,7 +91,7 @@ const Featured = () => {
       <h1 className="text-2xl font-bold mt-10 text-center">
         Top 10 featured blog
       </h1>
-      <div className="rounded-2xl">
+      <div className="rounded-xl">
         <DataTable
           className="shadow-xl border-2 border-primary my-10 w-full"
           columns={columns}

@@ -21,7 +21,7 @@ const BlogCard = ({ blog }) => {
   });
   return (
     <div className="shadow rounded-lg pb-3">
-      <div className="h-64 w-full overflow-y-hidden rounded-t-lg">
+      <div className="h-72 w-full overflow-y-hidden rounded-t-lg">
         <img src={img} className="rounded-t" />
       </div>
       <div className="p-2">

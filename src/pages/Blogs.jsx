@@ -56,7 +56,7 @@ const Blogs = () => {
             BloggyPro is an ever evolving blog website with regular updates.
           </p>
         </div>
-        <div className="p-6">
+        <div className="p-2 lg:p-6">
           <div>
             <form
               className="flex justify-center items-center my-7"
@@ -84,7 +84,7 @@ const Blogs = () => {
                   setActiveFilter("all");
                 }}
                 id="all"
-                className={`px-3 m-1.5 font-semibold text-center py-1 border-2 border-primary ${
+                className={`px-3 m-1 font-semibold text-center py-1 border-2 border-primary ${
                   activeFilter === "all"
                     ? "text-primary bg-white"
                     : "bg-primary  text-white"
@@ -100,7 +100,7 @@ const Blogs = () => {
                     setfilter(`blog?cat=${e}`);
                     setActiveFilter(e);
                   }}
-                  className={`px-3 m-1.5 font-semibold text-center py-1 border-2 border-primary ${
+                  className={`px-3 m-1 font-semibold text-center py-1 border-2 border-primary ${
                     activeFilter === e
                       ? "text-primary bg-white"
                       : "bg-primary  text-white"
@@ -113,7 +113,7 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {blogs?.data?.map((e) => (
           <BlogCard key={e._id} blog={e}></BlogCard>
         ))}
