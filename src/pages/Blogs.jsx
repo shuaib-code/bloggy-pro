@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import api from "../config/axios.config";
 import { useState } from "react";
 import BlogCard from "../components/card/BlogCard";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Blogs = () => {
   const [filter, setfilter] = useState("blog");
@@ -9,14 +11,7 @@ const Blogs = () => {
 
   const getBlogs = (filter) => api.get(`/${filter}`);
 
-  const {
-    isLoading,
-    isError,
-    error,
-    data: blogs,
-    isFetching,
-    isPreviousData,
-  } = useQuery({
+  const { isLoading, data: blogs } = useQuery({
     queryKey: ["blog", filter],
     queryFn: () => getBlogs(filter),
     keepPreviousData: true,
@@ -38,9 +33,11 @@ const Blogs = () => {
     "technology",
   ];
   if (isLoading) {
-    <div>
-      <p>Wait....</p>
-    </div>;
+    return (
+      <SkeletonTheme height="30px" highlightColor="#16B364">
+        <Skeleton count={7}></Skeleton>
+      </SkeletonTheme>
+    );
   }
   return (
     <div className="py-11">

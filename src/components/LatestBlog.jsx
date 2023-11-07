@@ -3,24 +3,21 @@ import api from "../config/axios.config";
 import BlogCard from "./card/BlogCard";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const LatestBlog = () => {
-  const {
-    isLoading,
-    isError,
-    error,
-    data: blogs,
-    isFetching,
-    isPreviousData,
-  } = useQuery({
+  const { isLoading, data: blogs } = useQuery({
     queryKey: ["Latestblog"],
     queryFn: () => api.get("/blog?get=latest").then((r) => r.data),
     keepPreviousData: true,
   });
   if (isLoading) {
-    <div>
-      <p>Wait....</p>
-    </div>;
+    return (
+      <SkeletonTheme height="30px" highlightColor="#16B364">
+        <Skeleton count={7}></Skeleton>
+      </SkeletonTheme>
+    );
   }
   return (
     <div>

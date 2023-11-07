@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../config/axios.config";
 import DataTable, { createTheme } from "react-data-table-component";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Featured = () => {
   const top = useQuery({
@@ -86,9 +88,11 @@ const Featured = () => {
     "dark"
   );
   if (top.isLoading) {
-    <div className="flex justify-center items-center mt-28">
-      <p>Loading</p>
-    </div>;
+    return (
+      <SkeletonTheme height="30px" highlightColor="#16B364">
+        <Skeleton count={10}></Skeleton>
+      </SkeletonTheme>
+    );
   }
   return (
     <div>

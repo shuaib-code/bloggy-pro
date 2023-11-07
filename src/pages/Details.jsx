@@ -7,6 +7,7 @@ import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import CommentCard from "../components/card/CommentCard";
+
 const Details = () => {
   const { user } = useAuth();
   const [fatch, setFatch] = useState(true);

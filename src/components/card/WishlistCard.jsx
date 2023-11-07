@@ -4,6 +4,8 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import api from "../../config/axios.config";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const BlogCard = ({ blogId, id, set, fetch }) => {
   const blogDetails = useQuery({
@@ -22,9 +24,9 @@ const BlogCard = ({ blogId, id, set, fetch }) => {
   });
   if (blogDetails.isLoading) {
     return (
-      <div className="py-44 flex items-center justify-center">
-        <p className="text-lg font-bold"> Fetching data...</p>
-      </div>
+      <SkeletonTheme height="30px" highlightColor="#16bc64">
+        <Skeleton count={5}></Skeleton>
+      </SkeletonTheme>
     );
   }
   const { img, title, des, cat, creator, date, _id } = blogDetails.data[0];
