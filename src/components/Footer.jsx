@@ -104,7 +104,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p className="text-sm font-medium text-center text-gray-700 my-5 lg:pt-32 lg:pb-4">
+      <p className="text-sm font-medium text-center text-gray-700 mt-5 pb-6 lg:pt-32 lg:pb-10">
         © theBloggyPro. 2023, Bangladesh. All rights reserved
       </p>
     </div>
