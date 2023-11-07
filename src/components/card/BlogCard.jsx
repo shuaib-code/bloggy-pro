@@ -5,6 +5,8 @@ import { useMutation } from "@tanstack/react-query";
 import api from "../../config/axios.config";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const BlogCard = ({ blog }) => {
   const { user } = useAuth();
@@ -23,7 +25,11 @@ const BlogCard = ({ blog }) => {
   return (
     <div className="shadow rounded-lg pb-3 flex flex-col">
       <div className="h-44 lg:h-72 w-full overflow-y-hidden rounded-t-lg">
-        <img src={img} className="rounded-t" />
+        <PhotoProvider>
+          <PhotoView src={img}>
+            <img src={img} className="rounded-t" />
+          </PhotoView>
+        </PhotoProvider>
       </div>
       <div className="p-2 grow flex flex-col">
         <div className="flex justify-between items-center">
