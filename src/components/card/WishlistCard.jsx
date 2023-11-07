@@ -36,7 +36,7 @@ const BlogCard = ({ blogId, id, set, fetch }) => {
       </div>
       <div className="p-2">
         <div className="flex justify-between items-center">
-          <p className="text-sm font-semibold text-primary bg-primary bg-opacity-10 rounded-md  inline-flex px-5">
+          <p className="text-xs px-3 py-1 font-bold text-violet-700 bg-violet-700 uppercase bg-opacity-10 rounded-full  inline-flex">
             {cat}
           </p>
           <p className="text-sm font-semibold">{ago}</p>

@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../config/axios.config";
-import DataTable from "react-data-table-component";
+import DataTable, { createTheme } from "react-data-table-component";
 
 const Featured = () => {
   const top = useQuery({
     queryKey: ["featured"],
-    queryFn: () => api.get("/featured").then((r) => r.data),
+    queryFn: () => api.get("/blog?get=featured").then((r) => r.data),
   });
   const width = window.innerWidth;
   const columns = [
@@ -53,9 +53,34 @@ const Featured = () => {
       style: {
         fontSize: "14px",
         fontWeight: "500",
+        backgroundColor: "transparent",
       },
     },
   };
+  createTheme(
+    "solarized",
+    {
+      text: {
+        primary: "black",
+      },
+      background: {
+        default: "transparent",
+      },
+      context: {
+        background: "#fff",
+        text: "#FFFFFF",
+      },
+      divider: {
+        default: "#808080",
+      },
+      // action: {
+      //   button: "rgba(0,0,0,.54)",
+      //   hover: "rgba(0,0,0,.08)",
+      //   disabled: "rgba(0,0,0,.12)",
+      // },
+    },
+    "dark"
+  );
   if (top.isLoading) {
     <div className="flex justify-center items-center mt-28">
       <p>Loading</p>
@@ -68,10 +93,11 @@ const Featured = () => {
       </h1>
       <div className="rounded-2xl">
         <DataTable
-          className="shadow-2xl border-2 border-primary my-10 w-full"
+          className="shadow-xl border-2 border-primary my-10 w-full"
           columns={columns}
           data={data}
           customStyles={customStyles}
+          theme="solarized"
         />
       </div>
     </div>

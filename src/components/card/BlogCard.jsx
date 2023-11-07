@@ -20,13 +20,13 @@ const BlogCard = ({ blog }) => {
     },
   });
   return (
-    <div className="shadow-md rounded-xl pb-3">
-      <div className="h-64 w-full overflow-y-hidden rounded-2xl">
-        <img src={img} className="rounded-2xl" />
+    <div className="shadow rounded-lg pb-3">
+      <div className="h-64 w-full overflow-y-hidden rounded-t-lg">
+        <img src={img} className="rounded-t" />
       </div>
       <div className="p-2">
         <div className="flex justify-between items-center">
-          <p className="text-sm font-semibold text-primary uppercase rounded-lg  inline-flex px-5">
+          <p className="text-xs font-bold text-violet-700 px-3 py-1 bg-violet-700 bg-opacity-10 uppercase rounded-full  inline-flex">
             {cat}
           </p>
           <p className="text-sm font-semibold">{ago}</p>
