@@ -5,7 +5,7 @@ const RecentComment = ({ comment }) => {
   const day = moment(date).format("DD");
   const month = moment(date).format("MMM");
   return (
-    <div className="bg-primary bg-opacity-5 p-2 lg:p-5 relative rounded-md mt-6">
+    <div className="bg-primary bg-opacity-5 shadow-lg p-2 lg:p-5 relative rounded-md mt-6">
       <div className="font-plusJakartaSans mt-7 flex justify-between items-center">
         <h1 className="font-bold text-primary">{userName}</h1>
         <div className="text-xs font-semibold text-slate-700 flex justify-center gap-1">

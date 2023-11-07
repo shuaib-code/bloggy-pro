@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const Profile = () => {
   const { user, logOut } = useAuth();
@@ -12,14 +13,22 @@ const Profile = () => {
   const login = (
     <>
       <Link to="/login">
-        <button className="px-5 py-1 font-semibold text-white border-2 border-primary bg-primary rounded shadow-sm">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-5 py-1 font-semibold text-white border-2 border-primary bg-primary rounded shadow-sm"
+        >
           Log In
-        </button>
+        </motion.button>
       </Link>
       <Link to="/register">
-        <button className="px-5 py-1 font-semibold text-primary bg-white border-2 border-primary rounded shadow-sm">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-5 py-1 font-semibold text-primary bg-white border-2 border-primary rounded shadow-sm"
+        >
           Register
-        </button>
+        </motion.button>
       </Link>
     </>
   );
@@ -34,12 +43,14 @@ const Profile = () => {
       </div>
       <div className="space-x-2">
         {user ? (
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleLogOut}
             className="px-5 py-1 font-semibold text-white border-2 border-primary bg-primary rounded shadow-sm"
           >
             Log Out
-          </button>
+          </motion.button>
         ) : (
           login
         )}

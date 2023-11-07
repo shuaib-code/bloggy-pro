@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const HomeBanner = () => {
   return (
@@ -15,14 +16,22 @@ const HomeBanner = () => {
         </p>
         <div className="space-x-2">
           <Link to="/add">
-            <button className="font-semibold px-3 border-2 border-primary py-1 bg-primary rounded-md text-white">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="font-semibold px-3 border-2 border-primary py-1 bg-primary rounded-md text-white"
+            >
               Write Blog
-            </button>
+            </motion.button>
           </Link>
           <Link to="/blogs">
-            <button className="font-semibold px-3 border-2 border-primary py-1 text-primary rounded-md bg-transparent">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="font-semibold px-3 border-2 border-primary py-1 text-primary rounded-md bg-transparent"
+            >
               See All Blogs
-            </button>
+            </motion.button>
           </Link>
         </div>
       </div>

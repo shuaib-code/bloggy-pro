@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import api from "../config/axios.config";
 import BlogCard from "./card/BlogCard";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const LatestBlog = () => {
   const {
@@ -32,9 +33,13 @@ const LatestBlog = () => {
         </div>
         <div>
           <Link to="/blogs">
-            <button className="text-sm font-semibold px-2 lg:px-3 py-2 rounded-md bg-primary text-white">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-sm font-semibold px-2 lg:px-3 py-2 rounded-md bg-primary text-white"
+            >
               View all
-            </button>
+            </motion.button>
           </Link>
         </div>
       </div>
