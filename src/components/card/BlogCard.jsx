@@ -20,11 +20,11 @@ const BlogCard = ({ blog }) => {
     },
   });
   return (
-    <div className="shadow rounded-lg pb-3">
+    <div className="shadow rounded-lg pb-3 flex flex-col">
       <div className="h-72 w-full overflow-y-hidden rounded-t-lg">
         <img src={img} className="rounded-t" />
       </div>
-      <div className="p-2">
+      <div className="p-2 grow flex flex-col">
         <div className="flex justify-between items-center">
           <p className="text-xs font-bold text-violet-700 px-3 py-1 bg-violet-700 bg-opacity-10 uppercase rounded-full  inline-flex">
             {cat}
@@ -32,7 +32,7 @@ const BlogCard = ({ blog }) => {
           <p className="text-sm font-semibold">{ago}</p>
         </div>
         <h1 className="font-bold text-lg font-plusJakartaSans my-2">{title}</h1>
-        <p className="text-sm font-medium">{des?.slice(0, 165)}...</p>
+        <p className="text-sm grow font-medium">{des?.slice(0, 165)}...</p>
         <div className="mt-3 flex justify-start items-center">
           <img src={creator?.img} className="w-7 rounded-full" />
           <p className="font-plusJakartaSans text-sm font-medium ml-2">

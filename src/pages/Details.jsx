@@ -111,7 +111,10 @@ const Details = () => {
     <div className="flex items-center justify-center py-7 mt-7">
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
         <div className="relative col-span-2">
-          <img src={img} className="rounded-xl shadow-2xl w-full" />
+          <img
+            src={img}
+            className="rounded-xl h-[270px] lg:h-[400px] shadow-xl object-cover w-full"
+          />
           <p className="text-sm uppercase font-semibold shadow-2xl absolute top-2 right-2.5 px-3 py-1 my-1 inline-flex rounded-sm text-primary bg-white">
             {cat}
           </p>

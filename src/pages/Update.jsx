@@ -1,10 +1,11 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../config/axios.config";
 import toast from "react-hot-toast";
 
 const Update = () => {
   const { blogId } = useParams();
+  const navigate = useNavigate();
   const blogDetails = useQuery({
     queryKey: [blogId],
     queryFn: () => api.get(`/blog?blog=${blogId}`).then((r) => r.data),
@@ -15,6 +16,7 @@ const Update = () => {
         r.data.modifiedCount > 0
           ? toast.success("Your Blog is Updated")
           : toast.error("There is nothing to update");
+        navigate(`/details/${_id}`);
       });
     },
   });

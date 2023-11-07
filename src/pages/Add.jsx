@@ -3,13 +3,17 @@ import useAuth from "../hooks/useAuth";
 import { useMutation } from "@tanstack/react-query";
 import api from "../config/axios.config";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Add = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const mutation = useMutation({
     mutationFn: async (blog) => {
       return await api.post("/blog", blog).then((r) => {
+        console.log(r.data);
         r.data.acknowledged ? toast.success("Your Blog is now Public") : null;
+        r.data.acknowledged ? navigate(`/details/${r.data.insertedId}`) : null;
       });
     },
   });
