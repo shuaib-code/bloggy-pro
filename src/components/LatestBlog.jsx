@@ -16,7 +16,6 @@ const LatestBlog = () => {
     queryFn: () => api.get("/blog?get=latest").then((r) => r.data),
     keepPreviousData: true,
   });
-  console.log(blogs);
   if (isLoading) {
     <div>
       <p>Wait....</p>
@@ -26,7 +25,7 @@ const LatestBlog = () => {
     <div>
       <div className="flex justify-between items-center my-6">
         <div>
-          <h1 className="text-2xl font-bold">Latest blogs</h1>
+          <h1 className="text-2xl font-bold">Recent blogs</h1>
           <p className="text-sm font-medium">
             Here is what we have been up to recently.
           </p>

@@ -3,7 +3,7 @@ import HomeBanner from "../components/banner/HomeBanner";
 
 const Home = () => {
   return (
-    <div className="my-9">
+    <div>
       <HomeBanner></HomeBanner>
       <LatestBlog></LatestBlog>
     </div>
