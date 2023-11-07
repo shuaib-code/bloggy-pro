@@ -8,7 +8,6 @@ const Featured = () => {
     queryFn: () => api.get("/featured").then((r) => r.data),
   });
   const width = window.innerWidth;
-  console.log(width);
   const columns = [
     {
       name: "No",
@@ -24,7 +23,7 @@ const Featured = () => {
       selector: (row) => row.name,
     },
     {
-      name: "Profile",
+      name: "Pic",
       selector: (row) => row.img,
       width: "60px",
       cell: (row) => (

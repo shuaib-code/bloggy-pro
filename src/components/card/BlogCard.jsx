@@ -31,7 +31,7 @@ const BlogCard = ({ blog }) => {
           </p>
           <p className="text-sm font-semibold">{ago}</p>
         </div>
-        <h1 className="font-bold font-plusJakartaSans my-2">{title}</h1>
+        <h1 className="font-bold text-lg font-plusJakartaSans my-2">{title}</h1>
         <p className="text-sm font-medium">{des?.slice(0, 165)}...</p>
         <div className="mt-3 flex justify-start items-center">
           <img src={creator?.img} className="w-7 rounded-full" />
