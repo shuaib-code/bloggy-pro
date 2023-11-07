@@ -44,7 +44,10 @@ const BlogCard = ({ blogId, id, set, fetch }) => {
         <h1 className="font-bold font-plusJakartaSans my-2">{title}</h1>
         <p className="text-sm font-medium">{des?.slice(0, 165)}...</p>
         <div className="mt-3 flex justify-start items-center">
-          <img src={creator?.img} className="w-7 rounded-full" />
+          <img
+            src={creator?.img}
+            className="w-7 h-7 object-cover rounded-full"
+          />
           <p className="font-plusJakartaSans text-sm font-medium ml-2">
             by <span className="font-semibold">{creator?.userName}</span>
           </p>

@@ -27,7 +27,11 @@ const Featured = () => {
       selector: (row) => row.img,
       width: "60px",
       cell: (row) => (
-        <img className="w-8 rounded-full" alt={row.name} src={row.img} />
+        <img
+          className="w-8 h-7 object-cover rounded-full"
+          alt={row.name}
+          src={row.img}
+        />
       ),
     },
   ];

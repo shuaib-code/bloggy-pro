@@ -11,7 +11,9 @@ function App() {
         <Outlet></Outlet>
       </div>
       <Footer></Footer>
-      <Toaster position="top-center" reverseOrder={false} />
+      <div className="text-sm font-semibold font-plusJakartaSans text-black">
+        <Toaster position="top-center" reverseOrder={false} />
+      </div>
     </>
   );
 }
