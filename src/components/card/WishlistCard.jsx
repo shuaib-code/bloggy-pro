@@ -31,7 +31,7 @@ const BlogCard = ({ blogId, id, set, fetch }) => {
 
   return (
     <div className="shadow-md rounded-xl pb-3">
-      <div className="h-72 w-full overflow-y-hidden rounded-t-xl">
+      <div className="h-48 lg:h-72 w-full overflow-y-hidden rounded-t-xl">
         <img src={img} className="rounded-t-xl" />
       </div>
       <div className="p-2">

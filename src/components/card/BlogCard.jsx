@@ -21,7 +21,7 @@ const BlogCard = ({ blog }) => {
   });
   return (
     <div className="shadow rounded-lg pb-3 flex flex-col">
-      <div className="h-72 w-full overflow-y-hidden rounded-t-lg">
+      <div className="h-44 lg:h-72 w-full overflow-y-hidden rounded-t-lg">
         <img src={img} className="rounded-t" />
       </div>
       <div className="p-2 grow flex flex-col">
@@ -31,7 +31,9 @@ const BlogCard = ({ blog }) => {
           </p>
           <p className="text-sm font-semibold">{ago}</p>
         </div>
-        <h1 className="font-bold text-lg font-plusJakartaSans my-2">{title}</h1>
+        <h1 className="font-bold text-base lg:text-lg font-plusJakartaSans my-2">
+          {title}
+        </h1>
         <p className="text-sm grow font-medium">{des?.slice(0, 165)}...</p>
         <div className="mt-3 flex justify-start items-center">
           <img
