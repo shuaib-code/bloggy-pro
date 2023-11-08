@@ -1,18 +1,24 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
 
 const HomeBanner = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center gap-7">
       <div className="space-y-9">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-10">
-          Let us worry about your <span className="text-primary">Blog</span>,
-          focus on writing blog.
+          Let us worry about your
+          <span className="text-primary">Blog</span>, focus on writing blog.
         </h1>
         <p className="text-base lg:text-xl font-medium text-gray-600">
-          A professional Blog page that comes with ready-to-post creative blog
-          with one common goal in mind, help you share faster & beautiful blog
-          with Bloggy PRO.
+          <TypeAnimation
+            sequence={[
+              " A professional Blog page that comes with ready-to-post creative blog with one common goal in mind, help you share faster & beautiful blog with Bloggy PRO.",
+              1000,
+            ]}
+            speed={150}
+            repeat={Infinity}
+          />
         </p>
         <div className="space-x-2">
           <Link to="/add">
