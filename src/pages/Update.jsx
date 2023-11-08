@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../config/axios.config";
 import toast from "react-hot-toast";
+import { info } from "autoprefixer";
 
 const Update = () => {
   const { blogId } = useParams();
@@ -28,7 +29,8 @@ const Update = () => {
       </div>
     );
   }
-  const { img, title, des, cat, creator, date, _id } = blogDetails.data[0];
+  const { img, title, des, cat, creator, date, _id, info } =
+    blogDetails.data[0];
 
   const catOption = [
     "education",
@@ -47,12 +49,14 @@ const Update = () => {
     const cat = form.cat.value;
     const img = form.img.value;
     const des = form.des.value;
+    const info = form.info.value;
 
     const blog = {
       title,
       cat,
       img,
       des,
+      info,
     };
     updateBlog.mutate(blog);
   };
@@ -109,6 +113,18 @@ const Update = () => {
           />
         </label>
         <label className="block">
+          <span className="block text-sm font-medium text-slate-700">Info</span>
+          <textarea
+            name="info"
+            id="info"
+            cols="30"
+            rows="3"
+            defaultValue={info}
+            className="mt-1 px-3 py-2.5 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-primary block w-full rounded-md sm:text-sm focus:ring-1"
+            required
+          ></textarea>
+        </label>
+        <label className="block">
           <span className="block text-sm font-medium text-slate-700">
             Description
           </span>
@@ -116,7 +132,7 @@ const Update = () => {
             name="des"
             id="des"
             cols="30"
-            rows="10"
+            rows="7"
             defaultValue={des}
             className="mt-1 px-3 py-2.5 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-primary block w-full rounded-md sm:text-sm focus:ring-1"
           ></textarea>

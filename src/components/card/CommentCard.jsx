@@ -13,7 +13,7 @@ const CommentCard = ({ comment }) => {
           <h1 className="font-semibold">{userName}</h1>
           <p>{now}</p>
         </div>
-        <p className="font-medium mt-3">{userComment}</p>
+        <p className=" mt-3">{userComment}</p>
       </div>
     </div>
   );

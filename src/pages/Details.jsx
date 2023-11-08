@@ -43,7 +43,8 @@ const Details = () => {
     );
   }
 
-  const { img, title, des, cat, creator, date, _id } = blogDetails.data[0];
+  const { img, title, des, cat, creator, date, _id, info } =
+    blogDetails.data[0];
   const now = moment(date).fromNow();
   const handelComment = (e) => {
     e.preventDefault();
@@ -140,7 +141,8 @@ const Details = () => {
               </div>
               <p className="font-medium text-primary">{now}</p>
             </div>
-            <p className="font-medium mt-4">{des}</p>
+            <p className="font-medium mt-4">{info}</p>
+            <p className="font-medium mt-3">{des}</p>
           </div>
         </div>
         <div>{commentSection}</div>

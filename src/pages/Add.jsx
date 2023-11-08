@@ -43,6 +43,7 @@ const Add = () => {
     const cat = form.cat.value;
     const img = form.img.value;
     const des = form.des.value;
+    const info = form.info.value;
     const date = moment().format();
 
     const blog = {
@@ -50,6 +51,7 @@ const Add = () => {
       cat,
       img,
       des,
+      info,
       creator: { id: user.uid, img: user.photoURL, userName: user.displayName },
       date,
     };
@@ -71,7 +73,7 @@ const Add = () => {
               type="text"
               name="title"
               className="mt-1 px-3 py-2.5 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-primary block w-full rounded-md sm:text-sm focus:ring-1"
-              placeholder="enter blog title"
+              placeholder="Enter blog title"
               required
             />
           </label>
@@ -100,9 +102,19 @@ const Add = () => {
             type="text"
             name="img"
             className="mt-1 px-3 py-2.5 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-primary block w-full rounded-md sm:text-sm focus:ring-1"
-            placeholder="enter your blog related image"
+            placeholder="Enter your blog related image"
             required
           />
+        </label>
+        <label className="block">
+          <span className="block text-sm font-medium text-slate-700">Info</span>
+          <textarea
+            name="info"
+            id="info"
+            cols="30"
+            rows="3"
+            className="mt-1 px-3 py-2.5 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-primary block w-full rounded-md sm:text-sm focus:ring-1"
+          ></textarea>
         </label>
         <label className="block">
           <span className="block text-sm font-medium text-slate-700">
@@ -112,7 +124,7 @@ const Add = () => {
             name="des"
             id="des"
             cols="30"
-            rows="10"
+            rows="7"
             className="mt-1 px-3 py-2.5 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-primary block w-full rounded-md sm:text-sm focus:ring-1"
           ></textarea>
         </label>

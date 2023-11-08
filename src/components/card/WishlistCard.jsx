@@ -33,7 +33,7 @@ const BlogCard = ({ blogId, id, set, fetch }) => {
       </SkeletonTheme>
     );
   }
-  const { img, title, des, cat, creator, date, _id } = blogDetails.data[0];
+  const { img, title, cat, creator, date, _id, info } = blogDetails.data[0];
   const ago = moment(date).fromNow();
 
   return (
@@ -49,7 +49,7 @@ const BlogCard = ({ blogId, id, set, fetch }) => {
           <p className="text-sm font-semibold">{ago}</p>
         </div>
         <h1 className="font-bold font-plusJakartaSans my-2">{title}</h1>
-        <p className="text-sm font-medium">{des?.slice(0, 165)}...</p>
+        <p className="text-sm font-medium">{info}</p>
         <div className="mt-3 flex justify-start items-center">
           <img
             src={creator?.img}

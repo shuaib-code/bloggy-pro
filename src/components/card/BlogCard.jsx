@@ -10,7 +10,7 @@ import "react-photo-view/dist/react-photo-view.css";
 
 const BlogCard = ({ blog }) => {
   const { user } = useAuth();
-  const { title, img, creator, des, cat, date, _id } = blog;
+  const { title, img, creator, cat, date, _id, info } = blog;
   const ago = moment(date).fromNow();
 
   const mutation = useMutation({
@@ -41,7 +41,7 @@ const BlogCard = ({ blog }) => {
         <h1 className="font-bold text-base lg:text-lg font-plusJakartaSans my-2">
           {title}
         </h1>
-        <p className="text-sm grow font-medium">{des?.slice(0, 165)}...</p>
+        <p className="text-sm grow font-medium">{info}</p>
         <div className="mt-3 flex justify-start items-center">
           <img
             src={creator?.img}
