@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <>
-      <div className="font-inter px-2 md:px-44 lg:px-52 bg-no-repeat bg-[url('https://material-kit-pro-react.devias.io/assets/gradient-bg.svg')]">
+      <div className="font-inter px-2 md:px-5 lg:px-52 bg-no-repeat bg-[url('https://material-kit-pro-react.devias.io/assets/gradient-bg.svg')]">
         <Navbar></Navbar>
         <Outlet></Outlet>
       </div>
