@@ -23,10 +23,13 @@ const Details = () => {
   });
   const postComment = useMutation({
     mutationFn: async (comment) => {
-      return await api.post(`/comment`, comment).then((r) => {
-        r.data.acknowledged ? toast.success("Your comment is added") : null;
-        r.data.acknowledged ? setFatch(!fatch) : null;
-      });
+      return await api
+        .post(`/comment?email=${user.email}`, comment)
+        .then((r) => {
+          r.data.acknowledged ? toast.success("Your comment is added") : null;
+          r.data.acknowledged ? setFatch(!fatch) : null;
+        })
+        .catch((e) => toast.error(e.message));
     },
   });
 

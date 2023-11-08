@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 const Newsletter = () => {
   const [newsletter, setNewsletter] = useState(0);
   const { ref, inView } = useInView();
-  console.log(inView);
   const massage = (
     <div
       className={`${

@@ -6,15 +6,24 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const Add = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const mutation = useMutation({
     mutationFn: async (blog) => {
-      return await api.post("/blog", blog).then((r) => {
-        console.log(r.data);
-        r.data.acknowledged ? toast.success("Your Blog is now Public") : null;
-        r.data.acknowledged ? navigate(`/details/${r.data.insertedId}`) : null;
-      });
+      return await api
+        .post(`/blog?email=${user.email}`, blog)
+        .then((r) => {
+          r.data.acknowledged ? toast.success("Your Blog is now Public") : null;
+          r.data.acknowledged
+            ? navigate(`/details/${r.data.insertedId}`)
+            : null;
+        })
+        .catch((e) => {
+          toast.error(e.message);
+          logOut().then(() =>
+            toast.error("Something is went worng. Log in again")
+          );
+        });
     },
   });
   const catOption = [

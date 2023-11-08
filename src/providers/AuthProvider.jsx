@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import auth from "../config/firebase.config";
+import api from "../config/axios.config";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -19,8 +20,10 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
       setUser(currentUser);
       setReloading(0);
+      api.post("/jwt", { userEmail }).then(() => {});
     });
     return () => {
       unsubcribe;
@@ -46,6 +49,7 @@ const AuthProvider = ({ children }) => {
     });
   };
   const logOut = () => {
+    api.post("/logout").then(() => {});
     setReloading(1);
     return signOut(auth);
   };

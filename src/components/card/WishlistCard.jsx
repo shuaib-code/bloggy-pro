@@ -4,22 +4,26 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import api from "../../config/axios.config";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import useAuth from "../../hooks/useAuth";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const BlogCard = ({ blogId, id, set, fetch }) => {
+  const { user } = useAuth();
   const blogDetails = useQuery({
     queryKey: [blogId],
     queryFn: () => api.get(`/blog?blog=${blogId}`).then((r) => r.data),
   });
   const mutation = useMutation({
     mutationFn: async (blog) => {
-      return await api.delete(`/wishlist?id=${id}`, blog).then((r) => {
-        r.data?.deletedCount > 0
-          ? toast.success(`${title} is deleted from your wishlist`)
-          : null;
-        r.data?.deletedCount > 0 ? set(!fetch) : null;
-      });
+      return await api
+        .delete(`/wishlist?id=${id}$email=${user.email}`, blog)
+        .then((r) => {
+          r.data?.deletedCount > 0
+            ? toast.success(`${title} is deleted from your wishlist`)
+            : null;
+          r.data?.deletedCount > 0 ? set(!fetch) : null;
+        });
     },
   });
   if (blogDetails.isLoading) {

@@ -1,4 +1,4 @@
-import Faq from "../components/Faq";
+import Faq from "../components/FAQ";
 import LatestBlog from "../components/LatestBlog";
 import Newsletter from "../components/Newsletter";
 import RecentComments from "../components/RecentComments";
