@@ -37,7 +37,10 @@ const Profile = () => {
       <div>
         {user ? (
           user?.photoURL ? (
-            <img className="w-8 rounded-full" src={user.photoURL}></img>
+            <img
+              className="w-8 h-8 object-cover rounded-full"
+              src={user.photoURL}
+            ></img>
           ) : null
         ) : null}
       </div>

@@ -83,12 +83,17 @@ const Details = () => {
   const commentSection = (
     <div>
       {user.uid === creator.id ? (
-        <Link to={`/update/${blogId}`}>
-          <div className="flex justify-center font-semibold items-center gap-4 bg-primary text-primary bg-opacity-10 py-2 rounded-md">
-            <BiEdit className="text-xl"></BiEdit>
-            <h1>Edit your blog</h1>
-          </div>
-        </Link>
+        <>
+          <Link to={`/update/${blogId}`}>
+            <div className="flex justify-center font-semibold items-center gap-4 bg-primary text-primary bg-opacity-10 py-2 rounded-md">
+              <BiEdit className="text-xl"></BiEdit>
+              <h1>Edit your blog</h1>
+            </div>
+          </Link>
+          <p className=" px-3 py-1 text-red-700 text-center font-medium bg-red-700 bg-opacity-10 rounded-md my-2">
+            You can not comment on your own blog
+          </p>
+        </>
       ) : (
         <div className="flex justify-center items-center gap-4 bg-gray-100 py-2 rounded-md">
           <BiCommentAdd className="text-xl"></BiCommentAdd>
