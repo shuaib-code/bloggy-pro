@@ -7,8 +7,8 @@ const HomeBanner = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center gap-7">
       <div className="space-y-9">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-10">
-          Let us worry about your
-          <span className="text-primary">Blog</span>, focus on writing blog.
+          Let us worry about your <span className="text-primary"> Blog </span>,
+          focus on writing blog.
         </h1>
         <p className="text-base lg:text-xl font-medium text-gray-600">
           <TypeAnimation
