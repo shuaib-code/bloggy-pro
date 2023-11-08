@@ -7,6 +7,8 @@ import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import CommentCard from "../components/card/CommentCard";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Details = () => {
   const { user } = useAuth();
@@ -35,9 +37,9 @@ const Details = () => {
 
   if (blogDetails.isLoading) {
     return (
-      <div className="py-44 flex items-center justify-center">
-        <p className="text-lg font-bold"> Fetching data...</p>
-      </div>
+      <SkeletonTheme height="30px" highlightColor="#16B364">
+        <Skeleton count={7}></Skeleton>
+      </SkeletonTheme>
     );
   }
 
@@ -65,11 +67,15 @@ const Details = () => {
         </span>
       </h1>
       <div className="space-y-3 mt-4">
-        {loadedComments.isLoading
-          ? "Loading Comments..."
-          : loadedComments.data?.map((e) => (
-              <CommentCard key={e._id} comment={e}></CommentCard>
-            ))}
+        {loadedComments.isLoading ? (
+          <SkeletonTheme height="30px" highlightColor="#16B364">
+            <Skeleton count={3}></Skeleton>
+          </SkeletonTheme>
+        ) : (
+          loadedComments.data?.map((e) => (
+            <CommentCard key={e._id} comment={e}></CommentCard>
+          ))
+        )}
       </div>
     </div>
   );
@@ -126,7 +132,10 @@ const Details = () => {
             <h1 className="text-xl lg:text-2xl font-bold">{title}</h1>
             <div className="flex justify-between items-center mt-4">
               <div className="flex justify-center items-center">
-                <img src={creator?.img} className="w-8 rounded-full mr-2" />
+                <img
+                  src={creator?.img}
+                  className="w-8 h-7 object-cover rounded-full mr-2"
+                />
                 <p className=" font-semibold">{creator?.userName}</p>
               </div>
               <p className="font-medium text-primary">{now}</p>
