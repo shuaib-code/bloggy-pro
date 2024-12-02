@@ -17,7 +17,7 @@ const BlogCard = ({ blogId, id, set, fetch }) => {
   const mutation = useMutation({
     mutationFn: async (blog) => {
       return await api
-        .delete(`/wishlist?id=${id}$email=${user.email}`, blog)
+        .delete(`/wishlist?id=${id}&email=${user.email}`, blog)
         .then((r) => {
           r.data?.deletedCount > 0
             ? toast.success(`${title} is deleted from your wishlist`)
