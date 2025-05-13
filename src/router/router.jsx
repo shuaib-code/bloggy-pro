@@ -3,20 +3,20 @@ import App from "../App";
 import Add from "../pages/Add";
 import Blogs from "../pages/Blogs";
 import Details from "../pages/Details";
+import Error from "../pages/Error";
 import Featured from "../pages/Featured";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Update from "../pages/Update";
 import Wishlist from "../pages/Wishlist";
-import Error from "../pages/error";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    errorElement: <Error></Error>,
+    errorElement: <Error/>,
     children: [
       {
         path: "/",
