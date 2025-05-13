@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # or your default branch
+      - main # default branch
 
 jobs:
   deploy:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "18"
@@ -21,9 +21,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Deploy to gh-pages
-        run: npm run deploy
+      - name: Set Git identity
+        run: |
+          git config --global user.email "shuaib.cyclist@gmail.com"
+          git config --global user.name "Mohammad Shuaib"
 
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
