@@ -1,19 +1,20 @@
-import Faq from "../components/FAQ";
-import LatestBlog from "../components/LatestBlog";
-import Newsletter from "../components/Newsletter";
-import RecentComments from "../components/RecentComments";
-import Slider from "../components/Slider";
-import HomeBanner from "../components/banner/HomeBanner";
+import HomeBanner from "@components/banner/HomeBanner";
+import Faq from "@components/FAQ";
+import LatestBlog from "@components/LatestBlog";
+import Newsletter from "@components/Newsletter";
+import RecentComments from "@components/RecentComments";
+import Slider from "@components/Slider";
+
 
 const Home = () => {
   return (
     <div>
-      <HomeBanner></HomeBanner>
-      <LatestBlog></LatestBlog>
-      <Faq></Faq>
-      <Slider></Slider>
-      <Newsletter></Newsletter>
-      <RecentComments></RecentComments>
+      <HomeBanner/>
+      <LatestBlog/>
+      <Faq/>
+      <Slider/>
+      <Newsletter/>
+      <RecentComments/>
     </div>
   );
 };
