@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://shuaib-code.github.io/bloggy-pro",
+  "homepage": "https://shuaib-code.github.io/bloggy-pro/",
   "scripts": {
     "predeploy": "npm run build",
    "deploy": "gh-pages -d dist -u \"shuaib-code <shuaib.cyclist@gmail.com>\"",
