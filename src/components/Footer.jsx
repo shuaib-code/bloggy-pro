@@ -1,8 +1,9 @@
+
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { ImPinterest, ImTwitter, ImWhatsapp, ImYoutube } from "react-icons/im";
+import { MdFacebook } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Logo from "../components/Logo";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import { MdFacebook } from "react-icons/md";
-import { ImPinterest, ImTwitter, ImWhatsapp, ImYoutube } from "react-icons/im";
 
 const NavLinkItem = ({ to, text }) => (
   <Link

@@ -21,7 +21,7 @@ const RecentComments = () => {
         </p>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-7 mt-7">
-        {comments?.data?.map((e, i) => (
+        {comments?.data?.map((e) => (
           <RecentComment key={e._id} comment={e}></RecentComment>
         ))}
       </div>

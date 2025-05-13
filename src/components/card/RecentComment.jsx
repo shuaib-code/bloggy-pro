@@ -1,7 +1,7 @@
 import moment from "moment";
 
 const RecentComment = ({ comment }) => {
-  const { comment: com, img, userName, date, _id } = comment;
+  const { comment: com, img, userName, date } = comment;
   const day = moment(date).format("DD");
   const month = moment(date).format("MMM");
   return (

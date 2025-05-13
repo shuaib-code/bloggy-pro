@@ -1,6 +1,3 @@
-import { createContext, useEffect, useState } from "react";
-import auth from "../config/firebase.config";
-import api from "../config/axios.config";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -10,6 +7,10 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
+import api from "../config/axios.config";
+import auth from "../config/firebase.config";
+
 
 export const AuthContext = createContext(null);
 const googelProvider = new GoogleAuthProvider();
@@ -28,6 +29,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       unsubcribe;
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const withGoogle = () => {

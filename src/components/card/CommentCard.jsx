@@ -1,7 +1,7 @@
 import moment from "moment";
 
 const CommentCard = ({ comment }) => {
-  const { _id, comment: userComment, id, date, userName, img } = comment;
+  const {  comment: userComment, date, userName, img } = comment;
   const now = moment(date).fromNow();
   return (
     <div className="grid grid-cols-10 gap-2 border-l-4 border-primary rounded-l shadow p-3">

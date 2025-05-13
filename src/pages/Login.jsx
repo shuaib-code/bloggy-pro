@@ -1,9 +1,10 @@
+/* eslint-disable no-useless-escape */
+import toast, { Toaster } from "react-hot-toast";
+import { BiArrowBack } from "react-icons/bi";
+import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 import WelcomeBanner from "../components/banner/WelcomeBanner";
-import { BiArrowBack } from "react-icons/bi";
-import { FcGoogle } from "react-icons/fc";
-import toast, { Toaster } from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 
 const Login = () => {

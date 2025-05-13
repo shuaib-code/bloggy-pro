@@ -1,8 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../config/axios.config";
-import toast from "react-hot-toast";
-import { info } from "autoprefixer";
 
 const Update = () => {
   const { blogId } = useParams();
@@ -29,7 +28,7 @@ const Update = () => {
       </div>
     );
   }
-  const { img, title, des, cat, creator, date, _id, info } =
+  const { img, title, des, cat, _id, info } =
     blogDetails.data[0];
 
   const catOption = [
