@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
 
 const HomeBanner = () => {
@@ -20,21 +20,24 @@ const HomeBanner = () => {
             repeat={Infinity}
           />
         </p>
-        <div className="space-x-2">
+        <div className="flex space-x-4">
           <Link to="/add">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="font-semibold px-3 border-2 border-primary py-1 bg-primary rounded-md text-white"
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              className="font-semibold px-5 py-2 border-2 border-primary rounded-md bg-primary text-white hover:bg-primary-dark"
             >
               Write Blog
             </motion.button>
           </Link>
+
           <Link to="/blogs">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="font-semibold px-3 border-2 border-primary py-1 text-primary rounded-md bg-transparent"
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              className="font-semibold px-5 py-2 border-2 border-primary rounded-md text-primary bg-transparent hover:bg-primary hover:text-white"
             >
               See All Blogs
             </motion.button>

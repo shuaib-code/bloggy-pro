@@ -16,7 +16,7 @@ const RecentComments = () => {
         <h1 className="text-2xl font-semibold mb-2 text-gray-800">
           Recent Comments from Blog
         </h1>
-        <p className="text-sm font-semibold text-gray-700">
+        <p className="text-sm font-medium text-gray-700">
           What people say about our blog...
         </p>
       </div>

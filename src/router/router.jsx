@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Home from "../pages/Home";
 import Add from "../pages/Add";
 import Blogs from "../pages/Blogs";
 import Details from "../pages/Details";
-import Update from "../pages/Update";
 import Featured from "../pages/Featured";
-import Wishlist from "../pages/Wishlist";
+import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Update from "../pages/Update";
+import Wishlist from "../pages/Wishlist";
 import Error from "../pages/error";
 import PrivateRoute from "./PrivateRoute";
 
@@ -71,7 +71,7 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
-  },
+  }
 ]);
 
 export default router;

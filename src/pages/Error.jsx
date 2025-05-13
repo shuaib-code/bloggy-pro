@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom";
 
 const Error = () => {
   return (
-    <div className="flex justify-center items-center font-inter bg-no-repeat bg-[url('https://material-kit-pro-react.devias.io/assets/gradient-bg.svg')]">
+    <div className="flex justify-center items-center font-inter bg-no-repeat">
       <div className="mt-16 p-7">
         <div className="flex justify-center items-center">
-          <img src="/404.png" />
+          <img src="/404.png" className=" relative max-w-28"/>
         </div>
         <h1 className="text-xl font-bold text-center my-10">
           <span className="text-red-500">404 </span>: The page you are looking

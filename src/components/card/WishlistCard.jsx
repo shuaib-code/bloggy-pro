@@ -1,92 +1,119 @@
-import moment from "moment";
-import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import api from "../../config/axios.config";
-import toast from "react-hot-toast";
 import { motion } from "framer-motion";
-import useAuth from "../../hooks/useAuth";
+import moment from "moment";
+import toast from "react-hot-toast";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Link } from "react-router-dom";
+import api from "../../config/axios.config";
+import useAuth from "../../hooks/useAuth";
 
 const BlogCard = ({ blogId, id, set, fetch }) => {
-  const { user } = useAuth();
-  const blogDetails = useQuery({
-    queryKey: [blogId],
-    queryFn: () => api.get(`/blog?blog=${blogId}`).then((r) => r.data),
-  });
-  const mutation = useMutation({
-    mutationFn: async (blog) => {
-      return await api
-        .delete(`/wishlist?id=${id}&email=${user.email}`, blog)
-        .then((r) => {
-          r.data?.deletedCount > 0
-            ? toast.success(`${title} is deleted from your wishlist`)
-            : null;
-          r.data?.deletedCount > 0 ? set(!fetch) : null;
-        });
-    },
-  });
-  if (blogDetails.isLoading) {
-    return (
-      <SkeletonTheme height="30px" highlightColor="#16bc64">
-        <Skeleton count={5}></Skeleton>
-      </SkeletonTheme>
-    );
-  }
-  const { img, title, cat, creator, date, _id, info } = blogDetails.data[0];
-  const ago = moment(date).fromNow();
+	// Get user data from custom hook
+	const { user } = useAuth();
 
-  return (
-    <div className="shadow-md rounded-xl pb-3">
-      <div className="h-48 lg:h-72 w-full overflow-y-hidden rounded-t-xl">
-        <img src={img} className="rounded-t-xl" />
-      </div>
-      <div className="p-2">
-        <div className="flex justify-between items-center">
-          <p className="text-xs px-3 py-1 font-bold text-violet-700 bg-violet-700 uppercase bg-opacity-10 rounded-full  inline-flex">
-            {cat}
-          </p>
-          <p className="text-sm font-semibold">{ago}</p>
-        </div>
-        <h1 className="font-bold font-plusJakartaSans my-2">{title}</h1>
-        <p className="text-sm font-medium">{info}</p>
-        <div className="mt-3 flex justify-start items-center">
-          <img
-            src={creator?.img}
-            className="w-7 h-7 object-cover rounded-full"
-          />
-          <p className="font-plusJakartaSans text-sm font-medium ml-2">
-            by <span className="font-semibold">{creator?.userName}</span>
-          </p>
-        </div>
-        <div className="mt-5 flex justify-end items-center mr-4 gap-2">
-          <div>
-            <Link to={`/details/${_id}`}>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="font-semibold text-sm px-3 py-1 bg-primary rounded-sm text-white"
-              >
-                Details
-              </motion.button>
-            </Link>
-          </div>
-          <div>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                mutation.mutate();
-              }}
-              className="font-semibold text-sm px-3 py-1 bg-red-700 bg-opacity-10 rounded-sm text-red-700"
-            >
-              {mutation.isPending ? "Removing..." : "Remove from Wishlist"}
-            </motion.button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+	// Fetch blog details using react-query
+	const blogDetails = useQuery({
+		queryKey: [blogId],
+		queryFn: () => api.get(`/blog?blog=${blogId}`).then((r) => r.data),
+	});
+
+	// Handle deletion of a blog from the wishlist
+	const mutation = useMutation({
+		mutationFn: async () => {
+			return await api
+				.delete(`/wishlist?id=${id}&email=${user.email}`)
+				.then((r) => {
+					if (r.data?.deletedCount > 0) {
+						toast.success(`${r.data.title} is deleted from your wishlist`);
+						set(!fetch); // Update parent state
+					}
+				});
+		},
+	});
+
+	// Show a skeleton loader while data is loading
+	if (blogDetails.isLoading) {
+		return (
+			<SkeletonTheme baseColor="#f4f4f4" highlightColor="#e0e0e0">
+				<Skeleton count={5} height={30} />
+			</SkeletonTheme>
+		);
+	}
+
+	// Destructure blog details for easier usage
+	const { img, title, cat, creator, date, _id, info } = blogDetails.data[0];
+	const ago = moment(date).fromNow();
+
+	return (
+		<div className="shadow-lg rounded-xl pb-3 bg-white">
+			{/* Blog Image Section */}
+			<div className="h-48 lg:h-72 w-full overflow-hidden rounded-t-xl">
+				<img
+					src={img}
+					alt={title}
+					className="w-full h-full object-cover rounded-t-xl"
+				/>
+			</div>
+
+			{/* Blog Details Section */}
+			<div className="p-4">
+				{/* Category and Timestamp */}
+				<div className="flex justify-between items-center mb-2">
+					<span className="text-xs px-3 py-1 font-bold text-violet-700 bg-violet-100 rounded-full uppercase">
+						{cat}
+					</span>
+					<span className="text-sm text-gray-500">{ago}</span>
+				</div>
+
+				{/* Blog Title */}
+				<h2 className="font-bold text-lg text-gray-800">{title}</h2>
+
+				{/* Blog Info */}
+				<p className="text-sm text-gray-600 mt-2">{info}</p>
+
+				{/* Creator Info */}
+				<div className="flex items-center mt-4">
+					<img
+						src={creator?.img}
+						alt={creator?.userName}
+						className="w-8 h-8 rounded-full object-cover"
+					/>
+					<p className="ml-3 text-sm font-medium text-gray-700">
+						by <span className="font-semibold">{creator?.userName}</span>
+					</p>
+				</div>
+
+				{/* Actions: Details and Remove */}
+				<div className="mt-5 flex justify-end gap-4">
+					{/* Navigate to Blog Details */}
+					<Link to={`/details/${_id}`}>
+						<motion.button
+							whileHover={{ scale: 1.05 }}
+							whileTap={{ scale: 0.95 }}
+							className="px-4 py-2 text-sm font-semibold text-white bg-primary rounded-md shadow-md"
+						>
+							Details
+						</motion.button>
+					</Link>
+
+					{/* Remove from Wishlist */}
+					<motion.button
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.95 }}
+						onClick={() => mutation.mutate()}
+						className={`px-4 py-2 text-sm font-semibold rounded-md shadow-md ${
+							mutation.isPending
+								? "bg-red-300 text-red-600"
+								: "bg-red-50 text-red-700"
+						}`}
+					>
+						{mutation.isPending ? "Removing..." : "Remove from Wishlist"}
+					</motion.button>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default BlogCard;
