@@ -15,6 +15,7 @@ const Home = () => {
       <Newsletter/>
       <RecentComments/>
     </div>
+    
   );
 };
 
