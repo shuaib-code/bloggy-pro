@@ -21,25 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Upload Firebase config as artifact
-        uses: actions/upload-artifact@v2 # Corrected to v2
-        with:
-          name: firebase-config
-          path: src/config/firebase.config.js # Path to the config file
-
       - name: Deploy to gh-pages
-        run: |
-          # Download the Firebase config artifact
-          mkdir -p src/config
-          actions/download-artifact@v2  # Corrected to v2
-          # Ensure the file is downloaded properly
-          mv src/config/firebase.config.js $GITHUB_WORKSPACE/src/config/firebase.config.js
+        run: npm run deploy
 
-          # Run your deploy command
-          npm run deploy
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Clean up Firebase config
-        run: rm -rf src/config/firebase.config.js # Delete Firebase config after deployment
