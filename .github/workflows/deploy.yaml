@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # default branch
+      - main
 
 jobs:
   deploy:
@@ -21,13 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Set Git identity
+      - name: Configure Git
         run: |
-          git config --global user.email "shuaib.cyclist@gmail.com"
-          git config --global user.name "Mohammad Shuaib"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
         env:
-          CI: true
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/shuaib-code/bloggy-pro.git
+          npm run deploy
